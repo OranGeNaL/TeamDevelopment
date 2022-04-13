@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
+
+    <script src="https://kit.fontawesome.com/f8270523b2.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src="/scripts/jquery-cookies.js"></script>
+    <script src="/scripts/authorization-module.js"></script>
+    <script src="/scripts/content-module.js"></script>
+    <script src="/scripts/header-handler.js"></script>
+    <script src="/scripts/login-handler.js"></script>
+
+    <title>Ещёнесома</title>
+</head>
+<body>
+    <header>
+        <div class="header-cont">
+            <div class="logo"></div>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="/index.html">Рецепты</a></li>
+                </ul>
+            </nav>
+
+            <form class="search-form" action="" method="get">
+                <input class="search-input" name="s" placeholder="запрос" type="search">
+                <!-- <button class="search-button" type="submit">
+                    <i class="fas fa-search"></i>
+                </button> -->
+
+                <div class="search-res-cont">
+                    <!-- <div class="result-cont">
+                        <div class="res-img"></div>
+                        <a class="result" href="">Bebra</a>
+                    </div> -->
+                </div>
+            </form>
+            
+            <div id="add-new-button">
+                <i class="fas fa-plus-circle"></i>
+            </div>
+
+            <div class="profile-container">
+                <div id="profile-button">
+                    <a id="profile-link" href="/pages/login.html"><i class="far fa-user-circle"></i></a>
+                </div>
+                
+                <div class="profile-text-container">
+                    <p class="profile-name">незарегистрированный пользователь</p>
+                    <a id="logout-button">войти</a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <h1>Войти или Зарегистрироваться</h1>
+
+        <div class="authorization-container">
+            <form class="login-field" action="" method="get">
+                <input placeholder="email" class="email-field" type="email" name="" id="login-email">
+                <input placeholder="пароль" class="password-field" type="password" name="" id="login-password">
+                <!-- <button class="btn" id="login-button" type="button">Войти</button> -->
+                <a  href="#login-button" class="btn" id="login-button">Войти</a>
+            </form>
+
+            <form class="login-field" action="" method="get">
+                <input placeholder="email" class="email-field" type="email" name="" id="register-email">
+                <input placeholder="пароль" class="password-field" type="password" name="" id="register-password">
+                <!-- <button class="btn" id="register-button" type="button">Зарегистрироваться</button> -->
+                <a  href="#register-button" class="btn" id="register-button">Зарегистрироваться</a>
+            </form>
+        </div>
+        
+    </main>
+    <footer>
+        
+    </footer>
+</body>
+</html>

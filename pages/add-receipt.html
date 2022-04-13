@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/add-receipt.css">
+
+    <script src="https://kit.fontawesome.com/f8270523b2.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src="/scripts/add-handler.js"></script>
+    <script src="/scripts/jquery-cookies.js"></script>
+    <script src="/scripts/authorization-module.js"></script>
+    <script src="/scripts/content-module.js"></script>
+    <script src="/scripts/header-handler.js"></script>
+
+    <title>Добавить рецепт</title>
+</head>
+<body>
+    <header>
+        <div class="header-cont">
+            <div class="logo"></div>
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="/index.html">Рецепты</a></li>
+                </ul>
+            </nav>
+
+            <form class="search-form" action="" method="get">
+                <input class="search-input" name="s" placeholder="запрос" type="search">
+                <!-- <button class="search-button" type="submit">
+                    <i class="fas fa-search"></i>
+                </button> -->
+
+                <div class="search-res-cont">
+                    <!-- <div class="result-cont">
+                        <div class="res-img"></div>
+                        <a class="result" href="">Bebra</a>
+                    </div> -->
+                </div>
+            </form>
+            
+            <div id="add-new-button">
+                <i class="fas fa-plus-circle"></i>
+            </div>
+
+            <div class="profile-container">
+                <div id="profile-button">
+                    <a id="profile-link" href="/pages/login.html"><i class="far fa-user-circle"></i></a>
+                </div>
+                
+                <div class="profile-text-container">
+                    <p class="profile-name">незарегистрированный пользователь</p>
+                    <a id="logout-button">войти</a>
+                </div>
+                
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <h1>Добавление рецепта</h1>
+
+        <form class="" action="">
+            <p class="receipt-info-header">Название</p>
+            <input class="text-i" type="text" name="" id="receipt-header-i">
+
+            <p class="receipt-info-header">Описание</p>
+            <textarea name="" id="receipt-description-i"></textarea>
+
+            <p class="receipt-info-header">Количество порций</p>
+            <input class="text-i" min="1" type="number" name="" id="receipt-portions-i">
+
+            <p class="receipt-info-header">Длительность приготовления в минутах</p>
+            <input class="text-i" type="number" name="" id="receipt-duration-i">
+
+            <p class="receipt-info-header">Ингредиенты</p>
+            <textarea placeholder="Вводите ингридиенты через точку с запятой" name="" id="receipt-ingridients-i"></textarea>
+
+            <p class="receipt-info-header">Шаги</p>
+            <div class="receipt-steps-cont">
+                <textarea name="" class="receipt-step-i"></textarea>
+            </div>
+
+            <!-- <input class="btn" id="add-step" type="button" value="Добавить шаг"> -->
+            <a  href="#add-step" class="btn" id="add-step">Добавить шаг</a>
+            <!-- <input id="rem-step" type="button" value="Удалить шаг"> -->
+            <a  href="#rem-step" class="btn" id="rem-step">Удалить шаг</a>
+        </form>
+
+        <!-- <input id="push-receipt-button" type="button" value="Добавить рецепт"> -->
+        <a  href="#push-receipt-button" class="btn" id="push-receipt-button">Добавить рецепт</a>
+    </main>
+</body>
+</html>

@@ -1,0 +1,48 @@
+
+{
+    "reg-req": { 
+        "email": "",
+        "password": ""
+    },
+    "reg-res": {
+        "sesID": ""
+    },
+
+    "ses-validation-req": {
+        "sesID": ""
+    },
+
+    "ses-validation-res": {
+        "email": ""
+    },
+
+    "receipt-from-id-res": {
+        "title": "",
+        "author": "",
+        "date": "",
+        "description": "",
+        "main-photo": "",
+        "cooking-duration": 10,
+        "portion-number": 4,
+        "ingridients": [
+            "ingridient",
+            "ingridient",
+            "ingridient"
+        ],
+        "steps": [
+            "step1",
+            "step2",
+            "step3"
+        ],
+        "steps-pictures": [
+            "pic1",
+            "pic2",
+            "pic3"
+        ]
+    },
+
+    "receipt-from-name-fragment": {
+        "title": "",
+        "main-photo": ""
+    }
+}
