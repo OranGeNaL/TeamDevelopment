@@ -7,6 +7,11 @@ h1 {
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
     font-size: 48px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 h2 {
@@ -14,12 +19,68 @@ h2 {
     font-weight: 300;
     font-size: 24px;
     font-style: italic;
+
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 .receipt-header {
     border-bottom: solid;
     border-color: black;
     padding-bottom: 5px;
+}
+
+.receipt-views{
+    /*margin-left: 100px;*/
+    font-family: 'Rubik', sans-serif;
+    font-weight: 50;
+    font-size: 17px ;
+    font-style: italic;
+
+    /*text-shadow: 1px 1px 3px #00000059;*/
+    /*color: rgb(0, 0, 0);*/
+}
+
+.receipt-author{
+    /*margin-left: 100px;*/
+    font-family: 'Rubik', sans-serif;
+    font-size: 22px ;
+    font-style: italic;
+}
+
+.receipt-likes{
+    font-family: 'Rubik', sans-serif;
+    font-size: 22px;
+    height: 100px; 
+
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#receipt-likes-count{
+
+}
+
+#receipt-dislikes-count{
+
+}
+
+#receipt-like-button{
+    width: 42px;
+    height: 42px;
+
+    color: rgb(47, 151, 34);
+}
+
+#receipt-dislike-button{
+    width: 42px;
+    height: 42px;
+
+    color: rgb(196, 31, 31);
 }
 
 .receipt-description {
