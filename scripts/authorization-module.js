@@ -110,5 +110,4 @@ $(document).ready(function(){
 var defaultSesId = "1231232";
 var currentEmail = "";
 var validSes = false;
-// var apiLink = "http://85.15.113.48:81";
-var apiLink = "http://localhost:8080";
+var apiLink = "https://orangenal-home.xyz/recipes";
