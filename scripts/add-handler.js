@@ -42,18 +42,22 @@ $(document).ready(function(){
             stepPics.push('empty');
         }
 
+        console.log(stepPics)
+
         var rec = {
             name: recName,
             category: "bebra",
-            date: "11.09.2001",
             description: recDesc,
-            pathToTheMainPicture: "empty",
+            mainPicture: "empty",
             cookingDuration: duration,
             portionNumber: portions,
             ingredients: recIngr,
             directions: steps,
-            pathToTheStepsPictures: stepPics,
-            author: $.cookie('session')
+            stepsPicture: stepPics,
+            author: $.cookie('session'),
+            views: 0,
+            likes: 0,
+            dislikes: 0
         };
 
         handlePush(rec)
