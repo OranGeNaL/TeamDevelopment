@@ -3,8 +3,6 @@ $(document).ready(function(){
         document.location.href = "/index.html";
     });
     $(".profile-name").html("неавторизованный пользователь");
-    $('#logout-button').html('войти');
-    $('#logout-button').attr('href', "/pages/login.html");
     
     $(".search-input").change(function() {
 
@@ -35,14 +33,32 @@ async function searchRecipe(name) {
 async function changeHeaderContent() {
     if(await validateSession())
         {
-            $("#profile-link").attr("href", "/pages/profile.html");
-            $(".profile-name").html(currentEmail);
-            $('#logout-button').attr('href', "");
-            $('#logout-button').html('выйти');
-    
-            $('#logout-button').click(function() {
-                setSession("1231231");
-            })
+            $("#logout-button").html(currentEmail);
+            $('#profile-button').click(function () { 
+                if(!menuToggle)
+                {
+                    $("#profile-button").append(`<div class="profile-menu">
+                    <p id="pm-profile-button">Профиль</p>
+                    <p id="pm-logout-button">Выйти</p>
+                    </div>`);
+
+                    $("#pm-profile-button").click(function (e) { 
+                        document.location.href = "/pages/profile.html";
+                    });
+
+                    $("#pm-logout-button").click(function (e) { 
+                        setSession("empty");
+                        document.location.reload();
+                    });
+
+                    menuToggle = !menuToggle;
+                }
+                else
+                {
+                    $(".profile-menu").remove();
+                    menuToggle = !menuToggle;
+                }
+            });
     
             $('#add-new-button').click(function () { 
                 document.location.href = "/pages/add-receipt.html";
@@ -52,8 +68,11 @@ async function changeHeaderContent() {
         }
     else
         { 
-            $(".profile-name").html("неавторизованный пользователь");
-            $('#logout-button').html('войти');
-            $('#logout-button').attr('href', "/pages/login.html");
+            $('#logout-button').html('Войти');
+            $('#profile-button').click(function () { 
+                document.location.href = "/pages/login.html";
+            });
         }
 }
+
+menuToggle = false
