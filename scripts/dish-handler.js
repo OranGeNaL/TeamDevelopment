@@ -6,8 +6,7 @@ $(document).ready(function(){
 
     if(currentReceipt != null)
     {
-        fillReceiptPage(currentReceipt);
-        
+        fillReceiptPage(currentReceipt);        
     }
     else
     {
@@ -25,9 +24,46 @@ async function fillReceiptPage(currentReceipt)
         $("main").append(buildReceiptHeader(responseObject));
         $("main").append(buildReceiptDescription(responseObject));
         $("main").append(buildReceiptSteps(responseObject.directions));
+        $("main").append(buildRatingButtons(responseObject.likes, responseObject.dislikes));
 
         $('.remove-receipt').click(function () {
             removeReceipt(currentReceipt)
+        });
+
+        $('#receipt-like-button').click(function (){
+            //console.log("ddgdgdg");
+
+            let response = fetch(apiLink + '/api/like?idRecipe=' + currentReceipt, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                  'Content-Type': 'application/json;charset=utf-8'
+                },
+            });
+
+            var forLikes = getReceiptById(currentReceipt);
+
+            forLikes.then(rs => {
+
+                if(forLikes != null){
+                    $('.receipt-likes-count').remove();
+                    var obj = `<div class="receipt-likes-count">` + rs.likes + `&emsp;</div>`;
+                    $(obj).insertBefore('#receipt-like-button');
+                }
+
+            });
+        });
+
+        $('#receipt-dislike-button').click(function (){
+            let response = fetch(apiLink + '/api/dislike?idRecipe=' + currentReceipt, {
+                method: 'POST',
+                mode: 'cors',
+                headers: {
+                  'Content-Type': 'application/json;charset=utf-8'
+                },
+            });
+
+            
         });
     }
 
@@ -40,9 +76,9 @@ async function fillReceiptPage(currentReceipt)
 function buildReceiptHeader(receiptContent)
 {
     var headerString =`<div class="receipt-header from-left-animated"><div class="receipt-header-top">
-    <h1>` + receiptContent.name + `</h1>` + checkAuthor(receiptContent.author) + `</div>
-    <h2>` + receiptContent.description + `</h2>
-</div>`;
+    <h1>` + receiptContent.name + `</h1>` + checkAuthor(receiptContent.author) + 
+    `<div class = "receipt-views">` + receiptContent.views + ` просмотров</div>` + `</div>
+    <h2>` + receiptContent.description + `</h2></div>`;
     return headerString;
 }
 
@@ -136,4 +172,18 @@ function buildReceiptSteps(steps)
     return `<div class="receipt-steps">
     ` + stepsStr + `
 </div>`;
+}
+
+function buildRatingButtons(likes, dislikes){
+    return `<div class="receipt-likes">
+                <div class="receipt-likes-count">` + likes +`&emsp;</div>
+                <div id="receipt-like-button">
+                    <i class="far fa-grin-hearts fa-2x"></i>
+                </div>
+                <div>&emsp;&emsp;</div>
+                <div id="receipt-dislike-button">
+                    <i class="far fa-frown fa-2x"></i>
+                </div>
+                <div class="receipt-dislikes-count">&emsp;` + dislikes + `</div>
+            </div>`;
 }
