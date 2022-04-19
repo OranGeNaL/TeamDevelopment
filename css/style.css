@@ -239,13 +239,19 @@ header {
     background-color: #E4E4E4;
 }
 
+.receipt-description-container{
+    /*display:flex;
+    flex-direction: row;
+    justify-content:end;*/
+}
+
 .receipt-description-container > a {
     font-size: 24px;
 
     text-decoration: underline;
     color: black;
 
-    display: flex;
+    /*display: flex;*/
 }
 
 .receipt-description-container > a:visited {
@@ -257,7 +263,7 @@ header {
 .receipt-description-container > p {
     display: inline-block;
 
-    margin-top: 20px;
+    margin-left: 20px;
     width: 500px;
 }
 
