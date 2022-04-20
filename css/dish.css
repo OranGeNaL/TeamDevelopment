@@ -8,17 +8,18 @@ h1 {
     font-weight: 500;
     font-size: 48px;
 
-    display: flex;
+    /*display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: baseline;*/
 }
 
 h2 {
     font-family: 'Rubik', sans-serif;
-    font-weight: 300;
-    font-size: 24px;
+    font-weight: 250;
+    font-size: 18px;
     font-style: italic;
+    width: 700px;
 
     display:flex;
     flex-direction: row;
@@ -38,6 +39,7 @@ h2 {
     font-weight: 50;
     font-size: 17px ;
     font-style: italic;
+    width: 130px;
 
     /*text-shadow: 1px 1px 3px #00000059;*/
     /*color: rgb(0, 0, 0);*/
@@ -45,8 +47,9 @@ h2 {
 
 .receipt-author{
     /*margin-left: 100px;*/
+    font-weight: 250;
     font-family: 'Rubik', sans-serif;
-    font-size: 22px ;
+    font-size: 18px ;
     font-style: italic;
 }
 
@@ -248,10 +251,12 @@ h2 {
 
 .remove-receipt {
     font-family: 'Rubik', sans-serif;
-    font-weight: 500;
+    font-weight: 350;
 
     color: black;
     font-size: 16px;
+    /*margin-right: 700px;*/
+    margin-top: 20px;
 }
 
 .remove-receipt:visited {
@@ -260,6 +265,14 @@ h2 {
 }
 
 .receipt-header-top {
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: space-between;
+    align-items: center;
+}
+
+.receipt-header-bottom {
     display: flex;
     flex-direction: row;
     

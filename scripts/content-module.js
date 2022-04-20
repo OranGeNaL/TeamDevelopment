@@ -103,8 +103,7 @@ async function pushReceipt(receipt)
         document.location.href = "/pages/dish.html?id=" + id;
         return true
     }
-    else if (response.status == 400)
-    {
-        alert("Ошибка");
+    else{
+        //alert("Ошибка.");
     }
 }
