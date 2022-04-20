@@ -10,11 +10,6 @@ main {
     width: 1000px;
 }
 
-.recipes {
-    margin: auto;
-    width: 1000px;
-    padding: 20px;
-}
 
 header {
     height: 150px;
@@ -23,6 +18,7 @@ header {
     align-items: center;
     justify-content: center;
 }
+
 
 .header-cont {
     height: 100px;
@@ -264,11 +260,10 @@ header {
 }
 
 .receipt-container {
-    margin: auto;
 
     margin-bottom: 30px;
 
-    width: 800px;
+    width: 1000px;
     height: 200px;
 
     border-radius: 20px;
@@ -276,7 +271,7 @@ header {
 
     display: flex;
     flex-direction: row;
-    /* align-items: center; */
+    align-items: center;
     justify-content: space-around;
 
     transition: all 0.15s ease-in-out;
@@ -432,7 +427,7 @@ header {
 }
 
 .profile-email {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 @keyframes fromTop {
@@ -482,5 +477,17 @@ header {
 }
 
 .receipts-list{
-    padding: 20px;
+    padding-top: 20px;
+}
+
+.recipes{
+    padding-top: 20px;
+}
+
+.detail-info{
+    padding-top: 20px;
+}
+
+.coutRecipes{
+    padding-top: 20px;
 }

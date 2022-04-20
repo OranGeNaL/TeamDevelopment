@@ -39,12 +39,17 @@ async function changeHeaderContent() {
                 {
                     $("#profile-button").append(`<div class="profile-menu">
                     <p id="pm-profile-button">Профиль</p>
+                    <p id="pm-fav-button">Избранное</p>
                     <p id="pm-logout-button">Выйти</p>
                     </div>`);
 
                     $("#pm-profile-button").click(function (e) { 
                         document.location.href = "/pages/profile.html";
                     });
+
+                    $("#pm-fav-button").click(() =>
+                        document.location.hred = "/pages/favourite.html"
+                    )
 
                     $("#pm-logout-button").click(function (e) { 
                         setSession("empty");
