@@ -61,12 +61,19 @@ h2 {
     align-items: center;
 }
 
-#receipt-likes-count{
+.receipt-likes-count{
 
 }
 
-#receipt-dislikes-count{
+.receipt-dislikes-count{
 
+}
+
+.smile{
+
+}
+.not_smile{
+    
 }
 
 #receipt-like-button{

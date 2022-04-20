@@ -1,6 +1,6 @@
-async function getReceiptById(receiptID)
+async function getReceiptById(receiptID, sesID)
 {
-    let url = apiLink + '/api/recipe/' + receiptID;
+    let url = apiLink + '/api/recipe/' + receiptID + '?sesID=' + sesID;
 
     let response = await fetch(url, {
         method: 'GET',

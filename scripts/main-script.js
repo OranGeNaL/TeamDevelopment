@@ -30,7 +30,7 @@ function buildReceipts(responseContent)
     var receiptsStr = "";
     for (let i = 0; i < responseContent.length; i++) {
         const receipt = responseContent[i];
-        receiptsStr += `<div class="receipt-container from-left-animated">
+        receiptsStr += `<div class="receipt-container from-left-animated">  
         <div class="receipt-img">
 
         </div>
