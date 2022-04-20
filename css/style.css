@@ -10,6 +10,12 @@ main {
     width: 1000px;
 }
 
+.recipes {
+    margin: auto;
+    width: 1000px;
+    padding: 20px;
+}
+
 header {
     height: 150px;
     display: flex;
@@ -270,7 +276,7 @@ header {
 
     display: flex;
     flex-direction: row;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-around;
 
     transition: all 0.15s ease-in-out;
@@ -429,4 +435,8 @@ header {
 
 #author-link{
     color: rgb(0, 0, 0);
+}
+
+.receipts-list{
+    padding: 20px;
 }
