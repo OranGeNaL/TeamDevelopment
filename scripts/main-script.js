@@ -31,9 +31,7 @@ function buildReceipts(responseContent)
     for (let i = 0; i < responseContent.length; i++) {
         const receipt = responseContent[i];
         receiptsStr += `<div class="receipt-container from-left-animated">  
-        <div class="receipt-img">
-
-        </div>
+        <img class="receipt-img" src="` + apiLink + responseContent[i].mainPhotosImagePath +  `">
         <div class="receipt-description-container">
             <a href="/pages/dish.html?id=` + receipt.id + `">` + receipt.name + `</a>
             <p>` + receipt.description + `</p>

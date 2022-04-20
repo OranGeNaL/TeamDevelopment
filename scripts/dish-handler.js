@@ -24,7 +24,7 @@ async function fillReceiptPage(currentReceipt)
     {
         $("main").append(buildReceiptHeader(responseObject));
         $("main").append(buildReceiptDescription(responseObject));
-        $("main").append(buildReceiptSteps(responseObject.directions));
+        $("main").append(buildReceiptSteps(responseObject.directions, responseObject));
         $("main").append(buildRatingButtons(responseObject.likes, responseObject.dislikes, responseObject.like, responseObject.dislike));
 
         var mem_likes = responseObject.likes;
@@ -170,7 +170,7 @@ function checkAuthor(author)
 function buildReceiptDescription(receiptContent)
 {
     var descriptionString = `<div class="receipt-description">
-    <div class="receipt-img from-top-animated"></div>
+    <img class="receipt-img from-top-animated" src="` + apiLink + receiptContent.mainPhotosImagePath + `">
 
     <div class="receipt-parameters">
         ` + countDuratuon(receiptContent.cookingDuration) +`
@@ -230,13 +230,14 @@ function buildReceiptIngredients(ingredients)
     return result;
 }
 
-function buildReceiptSteps(steps)
+function buildReceiptSteps(steps, receiptContent)
 {
     var stepsStr = "";
     for (let i = 0; i < steps.length; i++) {
         const step = steps[i];
         stepsStr += `<div class="receipt-step from-left-animated">
         <h3>` + (i + 1) + `.</h3>
+        <img src="` + apiLink + receiptContent.stepsPhotosImagePath[i] + `">
         <p>` + step + `</p>
     </div>
     `;

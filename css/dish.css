@@ -119,14 +119,17 @@ h2 {
     height: 250px;
     border-radius: 15px;
 
+    object-fit: cover;
+    object-position: center center;
+
     align-self: center;
 
-    background-color: #ffffff;
-    background-image: url("../img/receipt-pic.png");
+    /* background-color: #ffffff; */
+    /* background-image: url("../img/receipt-pic.png"); */
 
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+    /* background-position: center center; */
 
     box-shadow: 0 4px 10px 5px #00000010;
 }
@@ -206,7 +209,9 @@ h2 {
 
 .receipt-step {
     width: 900px;
-    height: 200px;
+
+    /* height: 200px; */
+    padding: 50px 0;
 
     margin-top: 20px;
     margin-bottom: 20px;
@@ -215,7 +220,7 @@ h2 {
     box-shadow: 0 6px 20px 5px #00000010;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 
 }
@@ -223,15 +228,26 @@ h2 {
 .receipt-step > h3 {
     display: inline-block;
 
-    width: 250px;
+    width: 50px;
     font-size: 48px;
     font-weight: 400;
+}
+
+.receipt-step > img {
+    width: 300px;
+    /* height: 300px; */
+    border-radius: 15px;
+
+    object-fit: cover;
+    object-position: center center;
+
+    align-self: center;
 }
 
 .receipt-step > p {
     display: inline-block;
 
-    width: 600px;
+    width: 400px;
 }
 
 .fast {

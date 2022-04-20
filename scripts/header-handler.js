@@ -18,6 +18,7 @@ $(document).ready(function(){
 
 async function searchRecipe(name) {
     var response = await getReceiptsByName(name);
+    
     $('.search-res-cont').html("");
 
     for (let i = 0; i < response.length; i++) {
