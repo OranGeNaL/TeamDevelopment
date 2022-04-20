@@ -48,7 +48,7 @@ async function changeHeaderContent() {
                     });
 
                     $("#pm-fav-button").click(() =>
-                        document.location.hred = "/pages/favourite.html"
+                        document.location.href = "/pages/favourite.html"
                     )
 
                     $("#pm-logout-button").click(function (e) { 
