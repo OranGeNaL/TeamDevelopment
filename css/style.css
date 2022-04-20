@@ -109,8 +109,8 @@ header {
 }
 
 #profile-button {
-    width: 50px;
-    height: 50px;
+    /* width: 50px; */
+    /* height: 50px; */
 
     border-radius: 15px;
 
@@ -125,7 +125,7 @@ header {
 
 .profile-container {
     /* width: 150px; */
-    height: 80px;
+    height: 50px;
 
     padding: 0 50px;
     user-select: none;
@@ -262,8 +262,10 @@ header {
 
     margin-bottom: 30px;
 
-    width: 800px;
-    height: 200px;
+    width: 900px;
+    /* height: 200px; */
+
+    padding: 50px;
 
     border-radius: 20px;
     box-shadow: 0 6px 20px 5px #00000010;
@@ -284,8 +286,8 @@ header {
 }
 
 .receipt-img {
-    width: 150px;
-    height: 120px;
+    width: 200px;
+    /* height: 120px; */
 
     border-radius: 20px;
     box-shadow: 0 6px 20px 5px #00000010;
