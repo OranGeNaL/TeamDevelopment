@@ -7,6 +7,7 @@ h1 {
     font-family: 'Rubik', sans-serif;
     font-weight: 500;
     font-size: 48px;
+    width: 800px;
 
     /*display: flex;
     flex-direction: row;
@@ -40,17 +41,10 @@ h2 {
     font-size: 17px ;
     font-style: italic;
     width: 130px;
+    text-align: right;
 
     /*text-shadow: 1px 1px 3px #00000059;*/
     /*color: rgb(0, 0, 0);*/
-}
-
-.receipt-author{
-    /*margin-left: 100px;*/
-    font-weight: 250;
-    font-family: 'Rubik', sans-serif;
-    font-size: 18px ;
-    font-style: italic;
 }
 
 .receipt-likes{
@@ -277,5 +271,13 @@ h2 {
     flex-direction: row;
     
     justify-content: space-between;
-    align-items: center;
+    vertical-align: bottom;
+}
+
+.receipt-header-bottom > p{
+    font-weight: 250;
+    font-family: 'Rubik', sans-serif;
+    font-size: 18px ;
+    font-style: italic;
+    text-align: right;
 }

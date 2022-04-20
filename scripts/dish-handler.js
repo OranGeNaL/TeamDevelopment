@@ -26,6 +26,7 @@ async function fillReceiptPage(currentReceipt)
         $("main").append(buildReceiptDescription(responseObject));
         $("main").append(buildReceiptSteps(responseObject.directions));
         $("main").append(buildRatingButtons(responseObject.likes, responseObject.dislikes, responseObject.like, responseObject.dislike));
+        $("main").append(buildFavoritesButton());
 
         var mem_likes = responseObject.likes;
         var mem_dislikes = responseObject.dislikes;
@@ -157,9 +158,9 @@ function buildReceiptHeader(receiptContent)
         `</div>
         <div class="receipt-header-bottom">
             <h2>` + receiptContent.description + `</h2>
-            <div class="receipt-author">
+            
                 <p> Автор: <a id="author-link" href="/pages/profile.html?id=` + receiptContent.author + `">` + receiptContent.author + `</a> </p>
-            </div>
+            
         </div>
     </div>`;
     return headerString;
@@ -271,4 +272,8 @@ function buildRatingButtons(likes, dislikes, is_liked, is_disliked){
                 </div>
                 <div class="receipt-dislikes-count">&emsp;` + dislikes + `</div>
             </div>`;
+}
+
+function buildFavoritesButton(){
+    return ``;
 }
