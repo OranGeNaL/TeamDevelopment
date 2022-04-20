@@ -68,7 +68,6 @@ async function fillReceiptPage(currentReceipt)
             }
         });
     }
-
     else
     {
         document.location.href = "/pages/not-found.html";
@@ -90,6 +89,7 @@ async function likeHandler(currentReceipt, is_liked, likes_am){
         fillLikes(is_liked, likes_am);
     }else{
         //console.log("like not ok");
+        alert("Для того, чтобы оценить рецепт, пожалуйста, вторизуйтесь.");
     }
 }
 
@@ -124,7 +124,7 @@ async function dislikeHandler(currentReceipt, is_disliked, mem_dislikes){
         is_disliked = !is_disliked;
         fillDislikes(is_disliked, mem_dislikes);
     }else{
-
+        alert("Для того, чтобы оценить рецепт, пожалуйста, авторизуйтесь.");
     }
 }
 
@@ -148,10 +148,20 @@ function fillDislikes(is_disliked, mem_dislikes){
 
 function buildReceiptHeader(receiptContent)
 {
-    var headerString =`<div class="receipt-header from-left-animated"><div class="receipt-header-top">
-    <h1>` + receiptContent.name + `</h1>` + checkAuthor(receiptContent.author) + 
-    `<div class = "receipt-views">` + receiptContent.views + ` просмотров</div>` + `</div>
-    <h2>` + receiptContent.description + `</h2></div>`;
+    var headerString =`
+    <div class="receipt-header from-left-animated">
+        <div class="receipt-header-top">
+            <h1>` + receiptContent.name + `</h1>` 
+            + checkAuthor(receiptContent.author) + 
+           `<div class = "receipt-views">` + receiptContent.views + ` просмотров</div>` + 
+        `</div>
+        <div class="receipt-header-bottom">
+            <h2>` + receiptContent.description + `</h2>
+            <div class="receipt-author">
+                <p> Автор: <a id="author-link" href="/pages/profile.html?id=` + receiptContent.author + `">` + receiptContent.author + `</a> </p>
+            </div>
+        </div>
+    </div>`;
     return headerString;
 }
 
