@@ -160,15 +160,14 @@ function buildReceiptHeader(receiptContent)
     var headerString =`
     <div class="receipt-header from-left-animated">
         <div class="receipt-header-top">
-            <h1>` + receiptContent.name + `</h1>` 
-            + checkAuthor(receiptContent.author) + 
-           `<div class = "receipt-views">` + receiptContent.views + ` просмотров</div>` + 
+            <h1>` + receiptContent.name + `</h1>
+            <div class = "receipt-views">` + receiptContent.views + ` просмотров</div>` + 
         `</div>
         <div class="receipt-header-bottom">
             <h2>` + receiptContent.description + `</h2>
-            
-                <p> Автор: <a id="author-link" href="/pages/profile.html?id=` + receiptContent.author + `">` + receiptContent.author + `</a> </p>
-            
+                <p> Автор: <a id="author-link" href="/pages/profile.html?id=` + receiptContent.author + `">` + receiptContent.author + `</a> </p>` 
+                + checkAuthor(receiptContent.author) + 
+               `
         </div>
     </div>`;
     return headerString;
