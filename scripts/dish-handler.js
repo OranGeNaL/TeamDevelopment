@@ -22,6 +22,7 @@ async function fillReceiptPage(currentReceipt)
     //var responseObject = await getReceiptById(currentReceipt, "");
     if(responseObject != null)
     {
+        document.title = responseObject.name;
         $("main").append(buildReceiptHeader(responseObject));
         $("main").append(buildReceiptDescription(responseObject));
         $("main").append(buildReceiptSteps(responseObject.directions, responseObject));
@@ -113,19 +114,23 @@ function fillFavorites(is_favorite){
 }
 
 async function likeHandler(currentReceipt, is_liked, likes_am){
-    let response = await fetch(apiLink + '/api/like?idRecipe=' + currentReceipt + '&sesID=' + $.cookie('session'), {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-    });
+    if(await validateSession())
+    {
+        let response = await fetch(apiLink + '/api/like?idRecipe=' + currentReceipt + '&sesID=' + $.cookie('session'), {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+            },
+        });
 
-    if(response.ok){
-        //console.log("like is ok", is_liked);
-        is_liked = !is_liked;
-        fillLikes(is_liked, likes_am);
-    }else{
+        if(response.ok){
+            //console.log("like is ok", is_liked);
+            is_liked = !is_liked;
+            fillLikes(is_liked, likes_am);
+        }
+    }
+    else{
         //console.log("like not ok");
         alert("Для того, чтобы оценить рецепт, пожалуйста, вторизуйтесь.");
     }
@@ -150,18 +155,22 @@ function fillLikes(is_liked, likes_am){
 }
 
 async function dislikeHandler(currentReceipt, is_disliked, mem_dislikes){
-    let response = await fetch(apiLink + '/api/dislike?idRecipe=' + currentReceipt + '&sesID=' + $.cookie('session'), {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-    });
+    if(await validateSession())
+    {
+        let response = await fetch(apiLink + '/api/dislike?idRecipe=' + currentReceipt + '&sesID=' + $.cookie('session'), {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+            },
+        });
 
-    if(response.ok){    
-        is_disliked = !is_disliked;
-        fillDislikes(is_disliked, mem_dislikes);
-    }else{
+        if(response.ok){    
+            is_disliked = !is_disliked;
+            fillDislikes(is_disliked, mem_dislikes);
+        }
+    }
+    else{
         alert("Для того, чтобы оценить рецепт, пожалуйста, авторизуйтесь.");
     }
 }
@@ -189,15 +198,14 @@ function buildReceiptHeader(receiptContent)
     var headerString =`
     <div class="receipt-header from-left-animated">
         <div class="receipt-header-top">
-            <h1>` + receiptContent.name + `</h1>` 
-            + checkAuthor(receiptContent.author) + 
-           `<div class = "receipt-views">` + receiptContent.views + ` просмотров</div>` + 
+            <h1>` + receiptContent.name + `</h1>
+            <div class = "receipt-views">` + receiptContent.views + ` просмотров</div>` + 
         `</div>
         <div class="receipt-header-bottom">
             <h2>` + receiptContent.description + `</h2>
-            
-                <p> Автор: <a id="author-link" href="/pages/profile.html?id=` + receiptContent.author + `">` + receiptContent.author + `</a> </p>
-            
+                <p> Автор: <a id="author-link" href="/pages/profile.html?id=` + receiptContent.author + `">` + receiptContent.author + `</a> </p>` 
+                + checkAuthor(receiptContent.author) + 
+               `
         </div>
     </div>`;
     return headerString;

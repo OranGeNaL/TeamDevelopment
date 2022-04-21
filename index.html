@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/selector.css">
 
     <script src="https://kit.fontawesome.com/f8270523b2.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -29,7 +30,7 @@
             </nav>
 
             <form class="search-form" action="" method="get">
-                <input class="search-input" name="s" placeholder="запрос" type="search">
+                <input class="search-input" name="s" placeholder="Поиск" type="search">
                 <!-- <button class="search-button" type="submit">
                     <i class="fas fa-search"></i>
                 </button> -->
@@ -53,7 +54,33 @@
     </header>
 
     <main>
+        <select id="selector" onchange="changeSelect(this)">
+            <option>Сортировать по дате публикации</option>
+            <option>Сортировать по числу лайков</option>
+            <option>Сортировать по числу просмотров</option>
+        </select>
+
+        <!-- <div class="receipt-container from-left-animated">  
+            <img class="receipt-img" src="">
+            <div class="receipt-description-container">
+                <div class=receipt-description-container-text>
+                    <a href="">Пример рецепта</a>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, odit reiciendis sit deleniti repudiandae officia magnam non deserunt cupiditate dolore, unde quas nihil dolorem! Recusandae temporibus sequi nesciunt eius quia?</p>
+                
+                    <div class="meta-description">
+                        <p><a href="">test@te.st</a> </p>
+                        <p class="meta-description-likes">50 <i class="far fa-grin-hearts"></i></p>
+                        <p class="meta-description-dislikes">50 <i class="far fa-frown"></i></p>
+                        <p class="meta-description-views">50 просмотров</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
         <div class="receipts-list">
+
+            
+
             <!-- <div class="receipt-container">
                 <div class="receipt-img">
 
