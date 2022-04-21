@@ -32,7 +32,8 @@ async function loadUserRecipes(){
 
 async function changeInfoContent(userLogin, countRecipes)
 {
-  $('.detail-info').append(`<h1>Пользователь ` + userLogin + `</h1>`);
+  document.title = userLogin;
+  $('.detail-info').append(`<h1>` + userLogin + `</h1>`);
   $('.detail-info').append(`<p class="coutRecipes">Добавлено рецептов: ` + String(countRecipes) + `</p>`);
 }
 

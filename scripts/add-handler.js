@@ -3,7 +3,7 @@ stepsCount = 1;
 $(document).ready(function(){
 
     $('#add-step').click(function () { 
-        $('.receipt-steps-cont').append('<input type="file" name="receipt-step-image-i" class="receipt-step-image-i">');
+        $('.receipt-steps-cont').append('<input type="file" name="receipt-step-image-i" class="receipt-step-image-i from-left-animated">');
         $('.receipt-steps-cont').append('<textarea name="" class="receipt-step-i from-left-animated" id="receipt-description-i"></textarea>');
         stepsCount += 1;
     });

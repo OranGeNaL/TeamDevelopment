@@ -22,6 +22,7 @@ async function fillReceiptPage(currentReceipt)
     //var responseObject = await getReceiptById(currentReceipt, "");
     if(responseObject != null)
     {
+        document.title = responseObject.name;
         $("main").append(buildReceiptHeader(responseObject));
         $("main").append(buildReceiptDescription(responseObject));
         $("main").append(buildReceiptSteps(responseObject.directions, responseObject));
