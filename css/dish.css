@@ -20,7 +20,7 @@ h2 {
     font-weight: 250;
     font-size: 18px;
     font-style: italic;
-    width: 700px;
+    width: 650px;
 
     display:flex;
     flex-direction: row;
@@ -78,8 +78,8 @@ h2 {
 }
 
 #receipt-favorites-button{
-    width: 42px;
-    height: 42px;
+    width: 36px;
+    height: 32px;
 
     color: yellow;
 }

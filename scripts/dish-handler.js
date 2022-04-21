@@ -23,12 +23,12 @@ async function fillReceiptPage(currentReceipt)
     if(responseObject != null)
     {
         document.title = responseObject.name;
-        $("main").append(buildReceiptHeader(responseObject));
+        $("main").append(buildReceiptHeader(responseObject, false));
         $("main").append(buildReceiptDescription(responseObject));
         $("main").append(buildReceiptSteps(responseObject.directions, responseObject));
         $("main").append(buildRatingButtons(responseObject.likes, responseObject.dislikes, responseObject.like, responseObject.dislike));
         //$("main").append(buildFavoritesButton(responseObject.isFavorite));
-        $("main").append(buildFavoritesButton(false));
+        //$("main").append(buildFavoritesButton(false));
 
         var mem_likes = responseObject.likes;
         var mem_dislikes = responseObject.dislikes;
@@ -85,7 +85,7 @@ async function fillReceiptPage(currentReceipt)
 }
 
 async function favoritesHandler(currentReceipt, is_favorite){
-    if(validateSession()){
+    if(await validateSession()){
         let response = await fetch (apiLink + '/api/favorites?idRecipe=' + currentReceipt + '&sesID=' + $.cookie('session'), {
             method: 'POST',
             mode: 'cors',
@@ -106,7 +106,7 @@ async function favoritesHandler(currentReceipt, is_favorite){
 
 function fillFavorites(is_favorite){
     var obj = `<div class="receipt-favorites-container">
-                    <i class="` + (is_favorite ? `fas` : `far`) + ` fa-star fa-3x"></i>
+                    <i class="` + (is_favorite ? `fas` : `far`) + ` fa-star fa-2x"></i>
                 </div>`;
                 console.log(is_favorite ? "fas" : "far");
 
@@ -193,8 +193,17 @@ function fillDislikes(is_disliked, mem_dislikes){
     $('.receipt-dislikes-count').replaceWith(obj);
 }
 
-function buildReceiptHeader(receiptContent)
+function buildReceiptHeader(receiptContent, is_favorite)
 {
+    var obj_type = is_favorite ? "fas" : "far";
+    var obj = (receiptContent.author != currentEmail) ?
+        `<div id=receipt-favorites-button>
+            <div class="receipt-favorites-container">
+                <i class="` + obj_type + ` fa-star fa-2x"></i>
+            </div>
+        </div>` 
+        : ``;
+
     var headerString =`
     <div class="receipt-header from-left-animated">
         <div class="receipt-header-top">
@@ -202,10 +211,12 @@ function buildReceiptHeader(receiptContent)
             <div class = "receipt-views">` + receiptContent.views + ` просмотров</div>` + 
         `</div>
         <div class="receipt-header-bottom">
-            <h2>` + receiptContent.description + `</h2>
-                <p> Автор: <a id="author-link" href="/pages/profile.html?id=` + receiptContent.author + `">` + receiptContent.author + `</a> </p>` 
-                + checkAuthor(receiptContent.author) + 
-               `
+            <h2>` + receiptContent.description + `</h2>`
+             + obj +
+             `
+            <p> Автор: <a id="author-link" href="/pages/profile.html?id=` + receiptContent.author + `">` + receiptContent.author + `</a> </p>` 
+            + checkAuthor(receiptContent.author) + 
+            `
         </div>
     </div>`;
     return headerString;
@@ -250,9 +261,9 @@ function countDuratuon(duration)
     if(duration <= 60)
     {
         dClass = "fast"
-        var min = duration - 15;
-        var max = duration + 15;
-        content = min + "-" + max + " минут";
+        // var min = duration - 15;
+        // var max = duration + 15;
+        content = duration + " минут";
     }
     else if(duration < 180)
     {
@@ -317,14 +328,5 @@ function buildRatingButtons(likes, dislikes, is_liked, is_disliked){
                     <div class=not_smile><i class="` + dislike_obj + ` fa-frown fa-2x"></i></div>
                 </div>
                 <div class="receipt-dislikes-count">&emsp;` + dislikes + `</div>
-            </div>`;
-}
-
-function buildFavoritesButton(is_added){
-    var obj = is_added ? "fas" : "far";
-    return `<div id=receipt-favorites-button>
-                <div class="receipt-favorites-container">
-                    <i class="` + obj + ` fa-star fa-3x"></i>
-                </div>
             </div>`;
 }
