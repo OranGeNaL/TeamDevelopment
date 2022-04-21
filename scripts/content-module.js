@@ -98,10 +98,6 @@ async function pushReceipt(receipt)
       
     
     return response;
-    // else if (response.status == 400)
-    // {
-    //     alert("Ошибка");
-    // }
 }
 
 async function pushRecipeMainPic(formData, idRecipe)
@@ -124,5 +120,5 @@ async function pushRecipeStepsPics(formData, idRecipe)
         body: formData
     })
     return response;
-    
+ 
 }

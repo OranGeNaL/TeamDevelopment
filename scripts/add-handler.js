@@ -18,11 +18,17 @@ $(document).ready(function(){
     });
 
     $('#push-receipt-button').click(function () { 
+
         var recName = $('#receipt-header-i').val();
         var recDesc = $('#receipt-description-i').val();
         var portions = parseInt($('#receipt-portions-i').val(), 10);
         var duration = parseInt($('#receipt-duration-i').val(), 10);
         var recIngr = $('#receipt-ingridients-i').val().split(';');
+
+
+        if(recDesc.length > 220){
+            alert("Описание не может превышать 220 символов.");
+            return;
 
         var mainPhotoFormData = new FormData();
         var stepsPhotoFormData = new FormData();
@@ -33,6 +39,7 @@ $(document).ready(function(){
         mainPhotoFormData.append("mainPhoto", fileField.files[0])
         for (let i = 0; i < stepFilesField.length; i++) {
             stepsPhotoFormData.append("stepsPhoto", stepFilesField[i].files[0]);
+
         }
 
         // alert(recIngr)
@@ -107,7 +114,7 @@ async function handlePush(rec, mainFormData, stepsPhotoFormData)
     }
     else
     {
-
+        alert("Ошибка");
     }
 }
 
