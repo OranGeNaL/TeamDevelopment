@@ -264,14 +264,13 @@ h2 {
     font-weight: 350;
 
     color: black;
-    font-size: 16px;
+    font-size: 18px;
     /*margin-right: 700px;*/
-    margin-top: 20px;
 }
 
 .remove-receipt:visited {
     color: black;
-    font-size: 16px;
+    /* font-size: 16px; */
 }
 
 .receipt-header-top {

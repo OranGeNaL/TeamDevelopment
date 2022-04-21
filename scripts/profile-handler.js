@@ -3,8 +3,8 @@ $(document).ready(function(){
 })
 
 async function loadUserRecipes(){
-    if (await validateSession())
-    {
+    // if (await validateSession())
+    // {
       var params = new URLSearchParams(location.search)
       var userLogin = params.get("id")
       
@@ -27,7 +27,7 @@ async function loadUserRecipes(){
 
       })
       
-  }
+  // }
 }
 
 async function changeInfoContent(userLogin, countRecipes)
@@ -49,24 +49,25 @@ function buildReceipts(responseContent)
   for (let i = 0; i < responseContent.length; i++) {
     const receipt = responseContent[i];
     receiptsStr += `<div class="receipt-container from-left-animated">  
-          <div class="receipt-img">
-  
-          </div>
-          <div class="receipt-description-container">
-              <div class=receipt-description-container-text>
-                  <a href="/pages/dish.html?id=` + receipt.id + `">` + receipt.name + `</a>
-                  <p>` + receipt.description + `</p>
-              </div>
-              <div class="meta-description">
-                  <div class="meta-description-views">` + receipt.views + ` просмотров</div>
-                  <div class="meta-description-likes">` + receipt.likes + ` <i class="far fa-grin-hearts"></i></div>
-                  <div class="meta-description-dislikes">` + receipt.dislikes + ` <i class="far fa-frown"></i></div>
-                  <p> Автор: <a href="/pages/profile.html?id=` + receipt.author + `">` + receipt.author + `</a> </p>
-              </div>
-          </div>
-      </div>
-      `;
+        <img class="receipt-img" src="` + apiLink + responseContent[i].mainPhotosImagePath +  `">
+        <div class="receipt-description-container">
+            
+                <a href="/pages/dish.html?id=` + receipt.id + `">` + receipt.name + `</a>
+                <p>` + receipt.description + `</p>
+            
+                <div class="meta-description">
+                    <a href="/pages/profile.html?id=` + receipt.author + `">` + receipt.author + `</a>
+                    <div class="meta-description-stats">
+                        <p class="meta-description-likes">` + receipt.likes + ` <i class="far fa-grin-hearts"></i></p>
+                        <p class="meta-description-dislikes">` + receipt.dislikes + ` <i class="far fa-frown"></i></p>
+                        <p class="meta-description-views">` + receipt.views + ` просмотров</p>
+                    </div>
+                </div>
+            
+        </div>
+    </div>
+    `;
     }
   
-      return receiptsStr;
-  }
+  return receiptsStr;
+}
