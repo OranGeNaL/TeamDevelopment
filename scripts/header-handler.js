@@ -46,7 +46,7 @@ async function changeHeaderContent() {
                     </div>`);
 
                     $("#pm-profile-button").click(function (e) { 
-                        document.location.href = "/pages/profile.html";
+                        document.location.href = "/pages/profile.html?id=" + currentEmail;
                     });
 
                     $("#pm-fav-button").click(() =>
