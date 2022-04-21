@@ -298,16 +298,14 @@ header {
 
 .receipt-description-container{
     display:flex;
-    flex-direction: row;
-    align-items: center;
-    /*justify-content:end;*/
-}   
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 
-.receipt-description-container-text{
-    width: 450px;
-    /*margin-right: 20px;*/
-    /*display:flex;*/
-    /*flex-direction: column;*/
+    width: 600px;
+
+    min-height: 175px;
+    /*justify-content:end;*/
 }
 
 .receipt-description-container-text > a {
@@ -333,39 +331,38 @@ header {
 }
 
 .meta-description{
-    width: 150px;
-    height: 150px;
-    display: flex;
-    flex-direction: column;
+    height: 50px;
+    width: 600px;
 
-    /* width: 50px;
-    height: 50px; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
     border-radius: 15px;
-    background-color: #c4c4c449;
-    justify-content: center;
-    /* align-items: center; */
 }
 
 .meta-description-likes{
-    margin-top: 10px;
-    margin-left: 7px;
     color: rgb(47, 151, 34);
 }
 
 .meta-description-dislikes{
-    margin-top: 10px;
-    margin-left: 7px;
     color: rgb(196, 31, 31);
 }
 
-.meta-description-views{
-    margin-left: 7px;
-}
 
 .meta-description > p{
-    margin-top: 10px;
     font-size: 15px;
-    margin-left: 7px;
+}
+
+.meta-description-stats {
+    min-width: 200px;
+    height: 50px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .search-res-cont {

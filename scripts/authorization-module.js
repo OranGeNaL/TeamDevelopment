@@ -14,34 +14,45 @@ function setSession(id) {
 }
 
 async function validateSession() {
-    if(validSes)
+    if(sessionHasBeenValidated)
     {
-        return true;
+        if(validSes)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
-
-    let cachedSession = {
-        sesID: $.cookie('session')
-    }
-
-    let url = apiLink + '/api/register?sesID=' + $.cookie('session')
-    let response = await fetch(url, {
-        method: 'GET',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-    });
-      
-    if (response.ok)
+    else
     {
-        let result = await response.json();
-        currentEmail = JSON.parse(JSON.stringify(result)).email;
-        validSes = true;
-        return true
+        let cachedSession = {
+            sesID: $.cookie('session')
+        }
+    
+        let url = apiLink + '/api/register?sesID=' + $.cookie('session')
+        let response = await fetch(url, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+        });
+          
+        if (response.ok)
+        {
+            let result = await response.json();
+            currentEmail = JSON.parse(JSON.stringify(result)).email;
+            validSes = true;
+            sessionHasBeenValidated = true;
+            return true
+        }
+    
+        currentEmail = "";
+        sessionHasBeenValidated = true;
+        return false;
     }
-
-    currentEmail = "";
-    return false;
 }
 
 async function sendRegReq(Email, Password) {
@@ -109,4 +120,5 @@ $(document).ready(function(){
 var defaultSesId = "1231232";
 var currentEmail = "";
 var validSes = false;
+var sessionHasBeenValidated = false;
 var apiLink = "https://orangenal-home.xyz/recipes";

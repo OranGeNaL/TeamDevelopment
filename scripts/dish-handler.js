@@ -76,19 +76,23 @@ async function fillReceiptPage(currentReceipt)
 }
 
 async function likeHandler(currentReceipt, is_liked, likes_am){
-    let response = await fetch(apiLink + '/api/like?idRecipe=' + currentReceipt + '&sesID=' + $.cookie('session'), {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-    });
+    if(await validateSession())
+    {
+        let response = await fetch(apiLink + '/api/like?idRecipe=' + currentReceipt + '&sesID=' + $.cookie('session'), {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+            },
+        });
 
-    if(response.ok){
-        //console.log("like is ok", is_liked);
-        is_liked = !is_liked;
-        fillLikes(is_liked, likes_am);
-    }else{
+        if(response.ok){
+            //console.log("like is ok", is_liked);
+            is_liked = !is_liked;
+            fillLikes(is_liked, likes_am);
+        }
+    }
+    else{
         //console.log("like not ok");
         alert("Для того, чтобы оценить рецепт, пожалуйста, вторизуйтесь.");
     }
@@ -113,18 +117,22 @@ function fillLikes(is_liked, likes_am){
 }
 
 async function dislikeHandler(currentReceipt, is_disliked, mem_dislikes){
-    let response = await fetch(apiLink + '/api/dislike?idRecipe=' + currentReceipt + '&sesID=' + $.cookie('session'), {
-        method: 'POST',
-        mode: 'cors',
-        headers: {
-          'Content-Type': 'application/json;charset=utf-8'
-        },
-    });
+    if(await validateSession())
+    {
+        let response = await fetch(apiLink + '/api/dislike?idRecipe=' + currentReceipt + '&sesID=' + $.cookie('session'), {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+            },
+        });
 
-    if(response.ok){    
-        is_disliked = !is_disliked;
-        fillDislikes(is_disliked, mem_dislikes);
-    }else{
+        if(response.ok){    
+            is_disliked = !is_disliked;
+            fillDislikes(is_disliked, mem_dislikes);
+        }
+    }
+    else{
         alert("Для того, чтобы оценить рецепт, пожалуйста, авторизуйтесь.");
     }
 }
