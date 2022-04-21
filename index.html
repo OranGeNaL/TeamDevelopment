@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/selector.css">
 
     <script src="https://kit.fontawesome.com/f8270523b2.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -29,7 +30,7 @@
             </nav>
 
             <form class="search-form" action="" method="get">
-                <input class="search-input" name="s" placeholder="запрос" type="search">
+                <input class="search-input" name="s" placeholder="Поиск" type="search">
                 <!-- <button class="search-button" type="submit">
                     <i class="fas fa-search"></i>
                 </button> -->
@@ -53,6 +54,11 @@
     </header>
 
     <main>
+        <select id="selector" onchange="changeSelect(this)">
+            <option>Сортировать по дате публикации</option>
+            <option>Сортировать по числу лайков</option>
+            <option>Сортировать по числу просмотров</option>
+        </select>
         <div class="receipts-list">
             <!-- <div class="receipt-container">
                 <div class="receipt-img">

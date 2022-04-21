@@ -7,22 +7,42 @@ else {
     console.log("nothing here");
 }
 
-$(document).ready(function(){
-    loadAllRecipes();
+$(document).ready(async function(){
+    //loadAllRecipes();
+    changeSelect($("#selector")[0])
 });
 
-async function loadAllRecipes()
-{
-    var result = await getAllRecipes();
+function changeSelect(selector){
+    if (selector.value == "Сортировать по дате публикации")
+        fetch(apiLink + "/api/recipe/orderBy/date").then(async rs => {
+            json = await rs.json();
+            if (json.length != 0)
+            {
+                loadAllRecipes(json)
+            }
+        })
+    else if ((selector.value == "Сортировать по числу лайков"))
+        fetch(apiLink + "/api/recipe/orderBy/likes").then(async rs => {
+            json = await rs.json();
+            if (json.length != 0)
+            {
+                loadAllRecipes(json)
+            }
+        })
+    else if ((selector.value == "Сортировать по числу просмотров"))
+        fetch(apiLink + "/api/recipe/orderBy/views").then(async rs => {
+            json = await rs.json();
+            if (json.length != 0)
+            {
+                loadAllRecipes(json)
+            }
+        })
+}
 
-    if(result != "")
-    {
-        $(".receipts-list").append(buildReceipts(result));
-    }
-    else
-    {
-        document.location.href = "/pages/not-found.html";
-    }
+function loadAllRecipes(json)
+{
+    $(".receipts-list").children().remove()
+    $(".receipts-list").append(buildReceipts(json));
 }
 
 function buildReceipts(responseContent)

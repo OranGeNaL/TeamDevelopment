@@ -1,47 +1,26 @@
 $(document).ready(function(){
-    loadUserRecipes();
+    loadFavRecipes();
 })
 
-async function loadUserRecipes(){
+async function loadFavRecipes(){
     if (await validateSession())
     {
-      var params = new URLSearchParams(location.search)
-      var userLogin = params.get("id")
-      
-      if (userLogin == null)
-        userLogin = currentEmail
-
-      // Рецепты
-      fetch(apiLink + '/api/recipe/author?email=' + userLogin).then(async rs => {
+    
+      fetch(apiLink + '/api/favorites?sesID=' + $.cookie('session')).then(async rs => {
         if (rs.ok)
         {
           json = await rs.json()
-          if (json.length != 0)
+          if (json.status != 404)
             $(".receipts-list").append(buildReceipts(json));
-          else
-            $(".recipes").append("<p>Вы ещё не добавили рецепты</p>")
         }
-
-        // Информация о пользователе
-        changeInfoContent(userLogin, json.length)
+        else
+            $(".recipes").append("<p>Вы ещё не добавили рецепты</p>")
 
       })
       
   }
 }
 
-async function changeInfoContent(userLogin, countRecipes)
-{
-  $('.detail-info').append(`<h1>Пользователь ` + userLogin + `</h1>`);
-  $('.detail-info').append(`<p class="coutRecipes">Добавлено рецептов: ` + String(countRecipes) + `</p>`);
-}
-
-function getCookie(name) {
-    var matches = document.cookie.match(new RegExp(
-      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
-    ));
-    return matches ? decodeURIComponent(matches[1]) : undefined;
-  }
 
 function buildReceipts(responseContent)
 {

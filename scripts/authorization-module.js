@@ -24,7 +24,6 @@ async function validateSession() {
     }
 
     let url = apiLink + '/api/register?sesID=' + $.cookie('session')
-
     let response = await fetch(url, {
         method: 'GET',
         mode: 'cors',
