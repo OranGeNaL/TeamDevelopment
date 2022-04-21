@@ -27,12 +27,15 @@ async function fillReceiptPage(currentReceipt)
         $("main").append(buildReceiptDescription(responseObject));
         $("main").append(buildReceiptSteps(responseObject.directions, responseObject));
         $("main").append(buildRatingButtons(responseObject.likes, responseObject.dislikes, responseObject.like, responseObject.dislike));
-        $("main").append(buildFavoritesButton());
+        //$("main").append(buildFavoritesButton(responseObject.isFavorite));
+        $("main").append(buildFavoritesButton(false));
 
         var mem_likes = responseObject.likes;
         var mem_dislikes = responseObject.dislikes;
         var is_liked = responseObject.like;
         var is_disliked = responseObject.dislike;
+        //var is_favorite = responseObject.isFavorite;
+        var is_favorite = false;
 
         $('.remove-receipt').click(function () {
             removeReceipt(currentReceipt);
@@ -69,11 +72,45 @@ async function fillReceiptPage(currentReceipt)
                 mem_likes -= 1;
             }
         });
+
+        $('#receipt-favorites-button').click(function (){
+            favoritesHandler(currentReceipt, is_favorite);
+            is_favorite = !is_favorite;
+        })
     }
     else
     {
         document.location.href = "/pages/not-found.html";
     }
+}
+
+async function favoritesHandler(currentReceipt, is_favorite){
+    if(validateSession()){
+        let response = await fetch (apiLink + '/api/favorites?idRecipe=' + currentReceipt + '&sesID=' + $.cookie('session'), {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'application/json;charset=utf-8'
+            },
+        });
+
+        if(response.ok){
+            is_favorite = !is_favorite;
+            fillFavorites(is_favorite);
+        }
+    }else{
+        alert("Для того, чтобы добавить рецепт в избранное, пожалуйста, авторизуйтесь.");
+    }
+    
+}
+
+function fillFavorites(is_favorite){
+    var obj = `<div class="receipt-favorites-container">
+                    <i class="` + (is_favorite ? `fas` : `far`) + ` fa-star fa-3x"></i>
+                </div>`;
+                console.log(is_favorite ? "fas" : "far");
+
+    $(".receipt-favorites-container").replaceWith(obj);
 }
 
 async function likeHandler(currentReceipt, is_liked, likes_am){
@@ -283,6 +320,11 @@ function buildRatingButtons(likes, dislikes, is_liked, is_disliked){
             </div>`;
 }
 
-function buildFavoritesButton(){
-    return ``;
+function buildFavoritesButton(is_added){
+    var obj = is_added ? "fas" : "far";
+    return `<div id=receipt-favorites-button>
+                <div class="receipt-favorites-container">
+                    <i class="` + obj + ` fa-star fa-3x"></i>
+                </div>
+            </div>`;
 }

@@ -73,6 +73,17 @@ h2 {
     
 }
 
+.receipt-favorites-container{
+
+}
+
+#receipt-favorites-button{
+    width: 42px;
+    height: 42px;
+
+    color: yellow;
+}
+
 #receipt-like-button{
     width: 42px;
     height: 42px;

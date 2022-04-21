@@ -30,6 +30,7 @@ $(document).ready(function(){
             alert("Описание не может превышать 220 символов.");
             return;
         }
+
         var mainPhotoFormData = new FormData();
         var stepsPhotoFormData = new FormData();
 
