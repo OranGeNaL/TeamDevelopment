@@ -32,9 +32,9 @@
   - Возвращает все рецепты аналогично запросу выше.
   - Пример: GET /api/recipe/all
 - GET "/api/recipe/author" возвращает все рецепты пользователя
-  - Передать параметр sesID - сессия пользователя
+  - Передать параметр email - email пользователя
   - Возвращает JSON-файл со всеми рецептами пользователя
-  - Пример: GET /api/recipe/author?sesID=857e5bb0-83ce-4838-ac5e-b3b7e05eb62f
+  - Пример: GET /api/recipe/author?email=test@test.ru
 - GET "/api/recipe/orderBy/date" возвращает все рецепты отсортированные по дате
   - Пример: GET /api/recipe/orderBy/date
 - GET "/api/recipe/orderBy/views" возвращает все рецепты отсортированные по просмотрам
