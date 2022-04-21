@@ -16,36 +16,33 @@ function changeSelect(selector){
     if (selector.value == "Сортировать по дате публикации")
         fetch(apiLink + "/api/recipe/orderBy/date").then(async rs => {
             json = await rs.json();
-            console.log(json)
-            $(".receipts-list").children().remove()
-            $(".receipts-list").append(buildReceipts(json));
+            if (json.length != 0)
+            {
+                loadAllRecipes(json)
+            }
         })
     else if ((selector.value == "Сортировать по числу лайков"))
         fetch(apiLink + "/api/recipe/orderBy/likes").then(async rs => {
             json = await rs.json();
-            $(".receipts-list").children().remove()
-            $(".receipts-list").append(buildReceipts(json));
+            if (json.length != 0)
+            {
+                loadAllRecipes(json)
+            }
         })
     else if ((selector.value == "Сортировать по числу просмотров"))
         fetch(apiLink + "/api/recipe/orderBy/views").then(async rs => {
             json = await rs.json();
-            $(".receipts-list").children().remove()
-            $(".receipts-list").append(buildReceipts(json));
+            if (json.length != 0)
+            {
+                loadAllRecipes(json)
+            }
         })
 }
 
-async function loadAllRecipes()
+function loadAllRecipes(json)
 {
-    var result = await getAllRecipes();
-
-    if(result != "")
-    {
-        $(".receipts-list").append(buildReceipts(result));
-    }
-    else
-    {
-        document.location.href = "/pages/not-found.html";
-    }
+    $(".receipts-list").children().remove()
+    $(".receipts-list").append(buildReceipts(json));
 }
 
 function buildReceipts(responseContent)

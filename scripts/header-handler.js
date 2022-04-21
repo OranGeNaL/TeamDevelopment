@@ -31,6 +31,7 @@ async function searchRecipe(name) {
 }
 
 async function changeHeaderContent() {
+    console.log(1)
     if(await validateSession())
         {
             $("#logout-button").html(currentEmail);
@@ -72,7 +73,7 @@ async function changeHeaderContent() {
             $('#add-new-button').css("display", "flex");
         }
     else
-        { 
+        {
             $('#logout-button').html('Войти');
             $('#profile-button').click(function () { 
                 document.location.href = "/pages/login.html";
