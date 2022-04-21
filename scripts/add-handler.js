@@ -29,7 +29,7 @@ $(document).ready(function(){
         if(recDesc.length > 220){
             alert("Описание не может превышать 220 символов.");
             return;
-
+        }
         var mainPhotoFormData = new FormData();
         var stepsPhotoFormData = new FormData();
 
