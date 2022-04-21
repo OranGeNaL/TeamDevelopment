@@ -18,19 +18,19 @@ function changeSelect(selector){
             json = await rs.json();
             console.log(json)
             $(".receipts-list").children().remove()
-            $(".receipts-list").append(buildReceipts(json.reverse()));
+            $(".receipts-list").append(buildReceipts(json));
         })
     else if ((selector.value == "Сортировать по числу лайков"))
         fetch(apiLink + "/api/recipe/orderBy/likes").then(async rs => {
             json = await rs.json();
             $(".receipts-list").children().remove()
-            $(".receipts-list").append(buildReceipts(json.reverse()));
+            $(".receipts-list").append(buildReceipts(json));
         })
     else if ((selector.value == "Сортировать по числу просмотров"))
         fetch(apiLink + "/api/recipe/orderBy/views").then(async rs => {
             json = await rs.json();
             $(".receipts-list").children().remove()
-            $(".receipts-list").append(buildReceipts(json.reverse()));
+            $(".receipts-list").append(buildReceipts(json));
         })
 }
 
