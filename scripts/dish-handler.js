@@ -23,7 +23,7 @@ async function fillReceiptPage(currentReceipt)
     if(responseObject != null)
     {
         document.title = responseObject.name;
-        $("main").append(buildReceiptHeader(responseObject, false));
+        $("main").append(buildReceiptHeader(responseObject, responseObject.isFavorite));
         $("main").append(buildReceiptDescription(responseObject));
         $("main").append(buildReceiptSteps(responseObject.directions, responseObject));
         $("main").append(buildRatingButtons(responseObject.likes, responseObject.dislikes, responseObject.like, responseObject.dislike));
@@ -34,8 +34,8 @@ async function fillReceiptPage(currentReceipt)
         var mem_dislikes = responseObject.dislikes;
         var is_liked = responseObject.like;
         var is_disliked = responseObject.dislike;
-        //var is_favorite = responseObject.isFavorite;
-        var is_favorite = false;
+        var is_favorite = responseObject.isFavorite;
+        //var is_favorite = false;
 
         $('.remove-receipt').click(function () {
             removeReceipt(currentReceipt);
