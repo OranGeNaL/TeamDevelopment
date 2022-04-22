@@ -308,17 +308,17 @@ header {
     /*justify-content:end;*/
 }
 
-.receipt-description-container-text > a {
+.receipt-description-container > a {
     font-size: 24px;
 
-    text-decoration: underline;
+    text-decoration: none;
     color: black;
 
     /*display: flex;*/
 }
 
-.receipt-description-container-text > a:visited {
-    text-decoration: underline;
+.receipt-description-container > a:visited {
+    text-decoration: none;
 
     color: black;
 }
