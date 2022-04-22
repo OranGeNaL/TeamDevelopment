@@ -23,7 +23,7 @@ async function fillReceiptPage(currentReceipt)
     if(responseObject != null)
     {
         document.title = responseObject.name;
-        $("main").append(buildReceiptHeader(responseObject, responseObject.isFavorite));
+        $("main").append(buildReceiptHeader(responseObject));
         $("main").append(buildReceiptDescription(responseObject));
         $("main").append(buildReceiptSteps(responseObject.directions, responseObject));
         $("main").append(buildRatingButtons(responseObject.likes, responseObject.dislikes, responseObject.like, responseObject.dislike));
@@ -34,7 +34,7 @@ async function fillReceiptPage(currentReceipt)
         var mem_dislikes = responseObject.dislikes;
         var is_liked = responseObject.like;
         var is_disliked = responseObject.dislike;
-        var is_favorite = responseObject.isFavorite;
+        var is_favorite = responseObject.favorite;
         //var is_favorite = false;
 
         $('.remove-receipt').click(function () {
@@ -193,9 +193,10 @@ function fillDislikes(is_disliked, mem_dislikes){
     $('.receipt-dislikes-count').replaceWith(obj);
 }
 
-function buildReceiptHeader(receiptContent, is_favorite)
+function buildReceiptHeader(receiptContent)
 {
-    var obj_type = is_favorite ? "fas" : "far";
+    var obj_type = receiptContent.favorite ? "fas" : "far";
+    console.log(obj_type, receiptContent.is)
     var obj = (receiptContent.author != currentEmail) ?
         `<div id=receipt-favorites-button>
             <div class="receipt-favorites-container">

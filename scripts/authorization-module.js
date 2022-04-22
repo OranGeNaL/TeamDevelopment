@@ -79,7 +79,7 @@ async function sendRegReq(Email, Password) {
         // alert(sesID);
         setSession(sesID);
 
-        // document.location.href = "/pages/login.html";
+        document.location.href = "/index.html";
         return true
     }
     else if (response.status == 400)

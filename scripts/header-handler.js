@@ -32,7 +32,7 @@ async function searchRecipe(name) {
 }
 
 async function changeHeaderContent() {
-    console.log(1)
+    // console.log(1)
     if(await validateSession())
         {
             $("#logout-button").html(currentEmail);
