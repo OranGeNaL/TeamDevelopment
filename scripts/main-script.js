@@ -13,7 +13,7 @@ $(document).ready(async function(){
 });
 
 function changeSelect(selector){
-    if (selector.value == "Сортировать по дате публикации")
+    if (selector.value == "Сначала новые")
         fetch(apiLink + "/api/recipe/orderBy/date").then(async rs => {
             json = await rs.json();
             if (json.length != 0)
@@ -21,7 +21,7 @@ function changeSelect(selector){
                 loadAllRecipes(json)
             }
         })
-    else if ((selector.value == "Сортировать по числу лайков"))
+    else if ((selector.value == "Сначала популярные"))
         fetch(apiLink + "/api/recipe/orderBy/likes").then(async rs => {
             json = await rs.json();
             if (json.length != 0)
@@ -29,7 +29,7 @@ function changeSelect(selector){
                 loadAllRecipes(json)
             }
         })
-    else if ((selector.value == "Сортировать по числу просмотров"))
+    else if ((selector.value == "Сначала просматриваемые"))
         fetch(apiLink + "/api/recipe/orderBy/views").then(async rs => {
             json = await rs.json();
             if (json.length != 0)
